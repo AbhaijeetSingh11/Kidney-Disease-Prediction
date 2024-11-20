@@ -37,10 +37,14 @@ def predict():
 
         # Predict using the model
         prediction = model.predict(features)
-
+    
         # Return the prediction as JSON
-        return jsonify({'prediction': int(prediction[0])})
-
+        # return jsonify({'prediction': int(prediction[0])})
+        if prediction[0] == 1:
+            result = "Positive Report" 
+        else: 
+            result = "Negative Report" # Return the prediction as JSON 
+        return jsonify({'prediction': result})
     except Exception as e:
         return jsonify({'error': str(e)})
 
